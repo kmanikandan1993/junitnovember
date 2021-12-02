@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -89,7 +90,7 @@ public void startTime() {
 	}
   }
 	}
-	@Test
+	@Ignore
 	public void test4() {
 		
 WebElement newMobileName=driver.findElement(By.xpath("//span[contains(text(),'realme')]"));

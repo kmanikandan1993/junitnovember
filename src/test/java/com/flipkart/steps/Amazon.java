@@ -25,8 +25,8 @@ public class Amazon {
 	public static void launch() {
 		System.out.println("Before class");
 		WebDriverManager.chromedriver().setup();
-		WebDriver driver = new ChromeDriver();
-		driver.get("https://www.flipkart.com/");
+		 driver = new ChromeDriver();
+		driver.get("https://www.amazon.in/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
@@ -50,53 +50,14 @@ public void startTime() {
 	}
 	
 	@Test
-	public void test1() throws InterruptedException{
-		Thread.sleep(2000);
-			try {
-			
-			WebElement button = driver.findElement(By.xpath("//button[text()='✕']"));
-			Thread.sleep(2000);
-			button.isDisplayed();
-			Thread.sleep(2000);
-			button.click();
-		} catch (Exception e) {
-			
-		System.out.println("pop up not displayed");	
-		}
-		
-		WebElement bar = driver.findElement(By.name("q"));
-		bar.sendKeys("realme mobile",Keys.ENTER);
-	}
-	static String MobileName;
-	@Test
-	public void test2() throws InterruptedException{
-		Thread.sleep(2000);
-	WebElement mobileName =	driver.findElement(By.xpath("(//div[contains(text(),'realme ')])[2]"));
-	 MobileName = mobileName.getText();
-	 System.out.println(MobileName);
-	mobileName.click();
-	}
 	
-	@Test
-	public void test3() throws InterruptedException{
-		String parentURL =driver.getWindowHandle();
+	public void test1() {
 		
-		Set<String> childURL=driver.getWindowHandles();
-  for(String child : childURL) {
-	  if (!parentURL.equals(child)) {
-		driver.switchTo().window(child);
-	}
-  }
-	}
-	@Test
-	public void test4() {
-		
-WebElement newMobileName=driver.findElement(By.xpath("//span[contains(text(),'realme')]"));
+WebElement search=driver.findElement(By.id("twotabsearchtextbox"));
+search.sendKeys("mobile phones",Keys.ENTER);
+WebElement  textvalue =driver.findElement(By.xpath("(//span[contains(text(),'Department')])[1]"));
 
-String newMobile = newMobileName.getText();	
-System.out.println(newMobile);
-
-Assert.assertTrue(newMobile.equals(MobileName));
+Assert.assertEquals("Department",textvalue.getText());
 		
 	}
 	
